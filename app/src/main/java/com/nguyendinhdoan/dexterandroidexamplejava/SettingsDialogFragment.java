@@ -65,7 +65,9 @@ public class SettingsDialogFragment extends DialogFragment {
 
     private void openSettings() {
         Intent intentSettings = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        startActivityForResult(intentSettings, SETTING_REQUEST_CODE);
+        Uri uri = Uri.fromParts("package", Objects.requireNonNull(getActivity()).getPackageName(), null);
+        intentSettings.setData(uri);
+        getActivity().startActivityForResult(intentSettings, SETTING_REQUEST_CODE);
     }
 
 }

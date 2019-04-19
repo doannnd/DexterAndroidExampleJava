@@ -3,6 +3,7 @@ package com.nguyendinhdoan.dexterandroidexamplejava;
 import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (response.isPermanentlyDenied()) {
                             showSettingsDialog();
                         }
+                        Toast.makeText(MainActivity.this, "permission denied", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void openCamera() {
-        Intent intentCamera = new Intent("android.media.action.IMAGE_CAPTURE");
+        Intent intentCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intentCamera, CAMERA_REQUEST_CODE);
     }
 
